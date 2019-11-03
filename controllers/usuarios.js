@@ -1,4 +1,5 @@
 module.exports = function(app) {
+    
     app.post('/usuario', (req, res) => {
         var usuario = req.body;
         
