@@ -1,6 +1,8 @@
+var authService = require('../service/auth-service');
+
 module.exports = function(app) {
 
-    app.get('/status', (req, res) => {
+    app.get('/status', authService.authorize, (req, res) => {
         var connection = app.dao.connectionFactory();
 
         var statusDao = new app.dao.StatusDao(connection);

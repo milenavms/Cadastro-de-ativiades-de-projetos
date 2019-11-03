@@ -1,6 +1,9 @@
+var authService = require('../service/auth-service');
+
+
 module.exports = function (app) {
 
-    app.post('/atividade', (req, res) => {
+    app.post('/atividade', authService.authorize,  (req, res) => {
         var atividade = req.body;
 
         console.log(atividade);
@@ -20,7 +23,7 @@ module.exports = function (app) {
     });
 
 
-    app.get('/atividade', (req, res) => {
+    app.get('/atividade', authService.authorize, (req, res) => {
 
 
         var connection = app.dao.connectionFactory();
@@ -36,7 +39,7 @@ module.exports = function (app) {
         });
     });
 
-    app.delete('/atividade/:id', (req, res) => {
+    app.delete('/atividade/:id', authService.authorize,  (req, res) => {
         var params = req.params;
 
         var connection = app.dao.connectionFactory();
@@ -54,7 +57,7 @@ module.exports = function (app) {
 
     });
 
-    app.put('/atividade', (req, res) => {
+    app.put('/atividade', authService.authorize, (req, res) => {
         var atividade = req.body;
 
         var connection = app.dao.connectionFactory();
@@ -69,7 +72,7 @@ module.exports = function (app) {
                 res.status(200).send(response.geraResposta());  
             }
 
-        })
+        });
 
     })
 

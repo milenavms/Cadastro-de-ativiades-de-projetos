@@ -1,0 +1,37 @@
+const jwt = require('jsonwebtoken');
+
+exports.generateToken = (data) => {
+    console.log(data);
+    console.log(global.SALT_KEY);
+    return jwt.sign(data, global.SALT_KEY, { expiresIn: '1d' });
+}
+
+exports.decodeToken = async (token) => {
+    var data = await jwt.verify(token, global.SALT_KEY);
+    return data;
+}
+
+exports.authorize = function (req, res, next) {
+    var token = req.body.token || req.query.token || req.headers['x-access-token'];
+
+    if (!token) {
+        res.status(401).json({
+            data: null,
+            code: 401,
+            mensagem: 'Acesso negado!'
+        });
+    } else {
+        jwt.verify(token, global.SALT_KEY, function (error, decoded) {
+            if (error) {
+                res.status(401).json({
+                    data: null,
+                    code: 401,
+                    mensagem: 'Acesso negado!'
+                });
+            } else {
+                next();
+            }
+        });
+    }
+};
+

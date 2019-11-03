@@ -1,6 +1,8 @@
+var authService = require('../service/auth-service');
+
 module.exports = function(app){
 
-    app.post('/projeto' , (req, res) => {
+    app.post('/projeto' ,authService.authorize, (req, res) => {
         var projeto = req.body;
 
         var connection = app.dao.connectionFactory();
@@ -17,7 +19,7 @@ module.exports = function(app){
         });
     });
 
-    app.get('/projeto', (req, res) => {
+    app.get('/projeto', authService.authorize, (req, res) => {
         var connection = app.dao.connectionFactory();
 
         var projetoDao = new app.dao.ProjetoDao(connection);
@@ -32,7 +34,7 @@ module.exports = function(app){
         });
     });
 
-    app.delete('/projeto/:id', (req, res) => {
+    app.delete('/projeto/:id', authService.authorize, (req, res) => {
         var params = req.params;
 
         var connection = app.dao.connectionFactory();
@@ -50,7 +52,7 @@ module.exports = function(app){
 
     })
 
-    app.put('/projeto', (req, res)=>{
+    app.put('/projeto', authService.authorize, (req, res)=>{
         var projeto = req.body;
         
         var connection = app.dao.connectionFactory();

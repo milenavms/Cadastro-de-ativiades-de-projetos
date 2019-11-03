@@ -18,6 +18,10 @@ UsuarioDao.prototype.alterar = function(usuario, callback) {
     this._connection.query('UPDATE usuario SET email = ?, senha = ? WHERE id = ?', [usuario.email, usuario.senha,  usuario.id], callback);
 }
 
+UsuarioDao.prototype.login = function(usuario, callback) {
+    this._connection.query('SELECT id, email FROM usuario WHERE email = ? AND senha = ?', [usuario.email, usuario.senha], callback);
+}
+
 module.exports = function() {
     return UsuarioDao;
 }

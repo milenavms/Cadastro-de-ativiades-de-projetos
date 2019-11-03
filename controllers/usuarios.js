@@ -1,6 +1,8 @@
+const authService = require('../service/auth-service');
+
 module.exports = function(app) {
     
-    app.post('/usuario', (req, res) => {
+    app.post('/usuario', authService.authorize, (req, res) => {
         var usuario = req.body;
         
         var connection = app.dao.connectionFactory();
@@ -18,7 +20,7 @@ module.exports = function(app) {
         });
     });
 
-    app.get('/usuario', (req, res) => {
+    app.get('/usuario', authService.authorize,(req, res) => {
         var connection = app.dao.connectionFactory();
 
         var usuarioDao = new app.dao.UsuarioDao(connection);
@@ -34,7 +36,7 @@ module.exports = function(app) {
     });
 
 
-    app.delete('/usuario/:id', (req, res)=> {
+    app.delete('/usuario/:id', authService.authorize, (req, res)=> {
         var params = req.params;
 
         var connection = app.dao.connectionFactory();
@@ -51,7 +53,7 @@ module.exports = function(app) {
         })
     });
 
-    app.put('/usuario', (req, res)=>{
+    app.put('/usuario', authService.authorize, (req, res)=>{
         var usuario = req.body;
         
         var connection = app.dao.connectionFactory();
@@ -67,5 +69,44 @@ module.exports = function(app) {
                 res.status(200).send(response.geraResposta());  
             }
         });
+    });
+
+
+    app.post('/authenticate', authService.authorize, (req, res) => {
+        var usuario = req.body;
+
+        var connection = app.dao.connectionFactory();
+
+        var usuarioDao = new app.dao.UsuarioDao(connection);
+
+        usuarioDao.login(usuario, function(erro, result) {
+            if(erro) {
+                var response = new app.dao.responseCustom(null, 404, 'Senha ou email inválidos!');
+                res.status(404).send(response);
+                return;
+            } else {
+
+                var users = Object.values(JSON.parse(JSON.stringify(result)))
+                if(users.length == 0) {
+                    var response = new app.dao.responseCustom(null, 404, 'Senha ou email inválidos!');
+                    res.status(404).send(response);
+                    return;
+                } 
+
+
+
+    
+                const token = authService.generateToken(users[0]);
+
+                var data = { 
+                    token: token,
+                    usuario: result
+                };
+
+                //var response = new app.dao.responseCustom(data, 404, 'Senha ou email inválidos!');
+                res.status(201).send(data);
+                return;
+            }
+        })
     })
 }
