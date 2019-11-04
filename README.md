@@ -30,12 +30,13 @@ Nodemon
   nodemon index.js  
 ```
  
- ### onfigurações para Postman
+ ### Configurações para Postman
  
  1. Listagem de Projeto:  GET:localhost:3000/projeto
  2. Create de Projeto:   POST:localhost:3000/projeto
  3. Detete de Projeto: DELETE:localhost:3000/projeto/1
  4. Update de projeto: PUT:localhost:3000/projeto
+ segue o padrão para demias tabelas
  
  
  
