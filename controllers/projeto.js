@@ -13,8 +13,8 @@ module.exports = function(app){
             if(erro) {
                 res.status(500).send(erro);
             } else {
-                var response = new app.dao.responseCustom(projeto, 201, 'Projeto cadastrado com sucesso!');
-                res.status(201).send(response.geraResposta());
+                var response = new app.dao.responseCustom(projeto, 200, 'Projeto cadastrado com sucesso!');
+                res.status(200).send(response.geraResposta());
             }
         });
     });
