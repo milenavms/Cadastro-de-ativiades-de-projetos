@@ -1,18 +1,18 @@
 # Cadastro-de-ativiades-de-projetos
 
 
-##Tecnologias utilizadas
+### Tecnologias utilizadas
 
 NodeJS v. 10.15.3
 Mysql
 Postman 6.5.2
 
-##Dependências
+### Dependências
 
 Express
 Nodemon
 
-##Guia
+### Guia
 1. clone o repositorio
 2. Entre na pasta do projeto
 3. Instalar as dependencias
@@ -21,7 +21,7 @@ Nodemon
 4. Rodar a aplicação
   nodemon index.js
  
- ##Configurações para Postman
+ ### onfigurações para Postman
  
  Listagem de Projeto:  GET:localhost:3000/projeto
  Create de Projeto:   POST:localhost:3000/projeto
