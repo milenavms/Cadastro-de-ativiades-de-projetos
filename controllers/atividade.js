@@ -16,8 +16,8 @@ module.exports = function (app) {
             if (erro) {
                 res.status(500).send(erro);
             } else {
-                var response = new app.dao.responseCustom(atividade, 201, 'Atividade salva com sucesso');
-                res.status(201).send(response.geraResposta());
+                var response = new app.dao.responseCustom(atividade, 200, 'Atividade salva com sucesso');
+                res.status(200).send(response.geraResposta());
             }
         });
     });
@@ -75,5 +75,24 @@ module.exports = function (app) {
         });
 
     })
+
+    app.get('/atividade/projeto/:id', authService.authorize, (req, res) =>{
+        var params = req.params;
+
+        var connection = app.dao.connectionFactory();
+
+        var atividadeDao = new app.dao.AtividadeDao(connection);
+
+        atividadeDao.listarPorProjeto(params.id, function(erro, result){
+            if (erro){
+                res.status(500).send(erro);
+            }else {
+                var response = new app.dao.responseCustom(result, 200, 'Atividades do projeto listadas');
+                res.status(200).send(response.geraResposta());
+            }
+        });
+
+    })
+
 
 }

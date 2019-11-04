@@ -60,6 +60,7 @@ module.exports = function(app) {
 
         var usuarioDao = new app.dao.UsuarioDao(connection);
 
+       
         usuarioDao.alterar(usuario, function(erro, result) {
             if(erro) {
                 res.status(500).send(erro);
@@ -72,7 +73,7 @@ module.exports = function(app) {
     });
 
 
-    app.post('/authenticate', authService.authorize, (req, res) => {
+    app.post('/authenticate', (req, res) => {
         var usuario = req.body;
 
         var connection = app.dao.connectionFactory();
@@ -92,10 +93,6 @@ module.exports = function(app) {
                     res.status(404).send(response);
                     return;
                 } 
-
-
-
-    
                 const token = authService.generateToken(users[0]);
 
                 var data = { 
@@ -104,7 +101,7 @@ module.exports = function(app) {
                 };
 
                 //var response = new app.dao.responseCustom(data, 404, 'Senha ou email inválidos!');
-                res.status(201).send(data);
+                res.status(200).send(data);
                 return;
             }
         })
