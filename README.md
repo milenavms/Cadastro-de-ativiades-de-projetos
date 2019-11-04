@@ -38,7 +38,7 @@ Nodemon
  4. Update de projeto: PUT:localhost:3000/projeto
  
  
- segue o padrão para demias tabelas
+ segue o padrão para demais tabelas
  
  
  
