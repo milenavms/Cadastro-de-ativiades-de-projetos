@@ -26,8 +26,8 @@ Nodemon
   
   
 4. Crie um Banco de dados
-    - Nome do BD = cap
-    - Importa as tabelas da pasta DB/cap.sql
+    - Nome do DB = cap
+    - Importa as tabelas no DB, que está na pasta raiz do projeto DB/cap.sql
   
 5. Subir a aplicação
 
