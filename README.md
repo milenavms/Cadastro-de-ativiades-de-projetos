@@ -9,7 +9,7 @@ Postman.
 
 ### Dependências
 
-Express
+Express;
 Nodemon
 
 ### Guia
