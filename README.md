@@ -3,9 +3,9 @@
 
 ### Tecnologias utilizadas
 
-NodeJS v. 10.15.3
-Mysql
-Postman 6.5.2
+NodeJS v. 10.15.3;
+Mysql;
+Postman.
 
 ### Dependências
 
