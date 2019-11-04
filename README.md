@@ -24,7 +24,12 @@ Nodemon
   npm install nodemon
   ```
   
-4. Subir a aplicação
+  
+4. Crie um Banco de dados
+    - *Nome do BD = cap
+    - *Importa as tabelas da pasta DB/cap.sql
+  
+5. Subir a aplicação
 
 ```
   nodemon index.js  
