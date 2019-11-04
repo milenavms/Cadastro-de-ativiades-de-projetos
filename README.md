@@ -34,6 +34,12 @@ Nodemon
 ```
   nodemon index.js  
 ```
+6. Login
+
+Acesse com:
+- email:test@nextem.com.br
+- senha:1234
+
  
  ### Configurações para Postman
  
