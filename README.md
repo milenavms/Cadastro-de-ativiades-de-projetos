@@ -16,17 +16,26 @@ Nodemon
 1. clone o repositorio
 2. Entre na pasta do projeto
 3. Instalar as dependencias
+
+```
   npm install
+```
+```
   npm install nodemon
+  ```
+  
 4. Rodar a aplicação
-  nodemon index.js
+
+```
+  nodemon index.js  
+```
  
  ### onfigurações para Postman
  
- Listagem de Projeto:  GET:localhost:3000/projeto
- Create de Projeto:   POST:localhost:3000/projeto
- Detete de Projeto: DELETE:localhost:3000/projeto/1
- Update de projeto: PUT:localhost:3000/projeto
+ 1. Listagem de Projeto:  GET:localhost:3000/projeto
+ 2. Create de Projeto:   POST:localhost:3000/projeto
+ 3. Detete de Projeto: DELETE:localhost:3000/projeto/1
+ 4. Update de projeto: PUT:localhost:3000/projeto
  
  
  
