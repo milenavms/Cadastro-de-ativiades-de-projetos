@@ -24,7 +24,7 @@ Nodemon
   npm install nodemon
   ```
   
-4. Rodar a aplicação
+4. Subir a aplicação
 
 ```
   nodemon index.js  
