@@ -7,10 +7,6 @@ NodeJS v. 10.15.3;
 Mysql;
 Postman.
 
-### Dependências
-
-Express;
-Nodemon
 
 ### Guia
 1. clone o repositorio
